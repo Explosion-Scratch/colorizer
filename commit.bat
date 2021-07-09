@@ -1,0 +1,1 @@
+git stage . && git commit -m "stuff"
