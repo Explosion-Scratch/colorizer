@@ -1,0 +1,17 @@
+li:hover {
+  border: 2px solid var(--color);
+  color: var(--color);
+}
+li::after {
+  content: attr(data-color);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+li.loading {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  background-color: #eee;
+  pointer-events: none;
+  animation-delay: var(--delay);
+}
