@@ -1,4 +1,4 @@
-.input_container:focus-within button:not(:focus) {
+.input_container button:hover {
   animation: shadow 1s infinite;
 }
 @keyframes shadow {
