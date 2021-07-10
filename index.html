@@ -32,6 +32,8 @@
       "
     >
       <svg
+      @click.capture.stop="modal($event)"
+        data-tippy-content="More colors + info"
         class="info_icon"
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -47,7 +49,7 @@
         preserveAspectRatio="xMidYMid meet"
         viewBox="0 0 12 12"
       >
-        <g fill="none">
+        <g>
           <path
             d="M5.5 6.5a.5.5 0 0 1 1 0V8a.5.5 0 0 1-1 0V6.5zM6 3.75a.75.75 0 1 0 0 1.5a.75.75 0 0 0 0-1.5zM1 6a5 5 0 1 1 10 0A5 5 0 0 1 1 6zm5-4a4 4 0 1 0 0 8a4 4 0 0 0 0-8z"
           />
@@ -56,15 +58,24 @@
     </li>
   </ul>
 </div>
+<!-- Tippy.js -->
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/themes/light.css" />
+<!-- Tailwind -->
 <link
   href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
   rel="stylesheet"
 />
+<!-- Main stylesheet -->
 <link rel="stylesheet" href="style.css" />
+<!-- Vue -->
 <script src="https://unpkg.com/vue@3"></script>
+<!-- TinyColor -->
 <script
   src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.2/tinycolor.min.js"
   referrerpolicy="no-referrer"
   defer
 ></script>
+<!-- Main script -->
 <script src="script.js" defer async></script>

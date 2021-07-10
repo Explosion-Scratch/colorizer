@@ -4,18 +4,25 @@ var app = Vue.createApp({
       images: [],
     };
   },
+  methods: {
+    modal(event) {
+      // TODO: Add modal stuff. (called when SVG is clicked.)
+    },
+  },
   computed: {
     imageList() {
-      return this.images.sort((item1, item2) => {
-        const it = (item) => {
-          if (!item.loaded) {
-            return 1000;
-          }
-          console.log(item.tc.toHsl());
-          return item.tc.toHsl().h;
-        };
-        return it(item1) - it(item2);
-      });
+      return this.images
+        .filter((i) => !i.error)
+        .sort((item1, item2) => {
+          const it = (item) => {
+            if (!item.loaded) {
+              return 1000;
+            }
+            console.log(item.tc.toHsl());
+            return item.tc.toHsl().h;
+          };
+          return it(item1) - it(item2);
+        });
     },
   },
 }).mount("#app");
@@ -32,9 +39,8 @@ btn.onclick = async () => {
       .then((res) => res.json())
       .then((pallette) => {
         if (pallette.error) {
-          // Just replace it with undefined, if we delete it though it'll mess with other fetch calls.
-          // I might make the computed image list check for errors as well.
-          delete app.images[index];
+          // Filtered in computed imageList
+          return (app.images[index].error = true);
         }
         app.images[index].loaded = true;
         app.images[index].pallette = pallette;
@@ -50,6 +56,9 @@ btn.onclick = async () => {
           b: col[2],
         });
         app.images[index].color = app.images[index].tc.toHexString();
+        setTimeout(() => {
+          tippy("[data-tippy-content]");
+        }, 200);
       });
   });
 };
