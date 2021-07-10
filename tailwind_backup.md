@@ -1,3 +1,4 @@
+https://play.tailwindcss.com/aU4OaOG0uG
 # CSS
 @tailwind base;
 @tailwind components;
