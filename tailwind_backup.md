@@ -1,5 +1,8 @@
 https://play.tailwindcss.com/aU4OaOG0uG
+
 # CSS
+
+```css
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,14 +13,14 @@ li {
 }
 li:hover {
   border: 2px solid var(--color);
-  color: var(--color)
+  color: var(--color);
 }
 li::after {
   content: attr(data-color);
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%)
+  transform: translate(-50%, -50%);
 }
 li.loading {
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
@@ -27,11 +30,14 @@ li.loading {
 }
 @keyframes pulse {
   50% {
-    opacity: .5
+    opacity: 0.5;
   }
 }
+```
 
 # HTML
+
+```html
 <ul class="h-full w-full">
   <li style="--color: #0bb" data-color="#0bb"></li>
   <li></li>
@@ -43,3 +49,4 @@ li.loading {
   <li class="loading"></li>
   <li class="loading"></li>
 </ul>
+```
