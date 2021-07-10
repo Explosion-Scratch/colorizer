@@ -1,3 +1,25 @@
+.input_container:focus-within button:not(:focus) {
+  animation: shadow 1s infinite;
+}
+@keyframes shadow {
+  20% {
+    box-shadow: 0 0 0 5px #0bb5;
+  }
+  100% {
+    box-shadow: 0 0 0 10px #0bb0;
+  }
+}
+@media (max-width: 490px) {
+  ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+@media (max-width: 320px) {
+  ul {
+    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+  }
+}
+
 li {
   background: var(--color);
   transition: tranform 0.1s ease, color 0.3s ease, background-color 0.5s ease,

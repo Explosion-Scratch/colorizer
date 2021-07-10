@@ -8,6 +8,25 @@ var app = Vue.createApp({
     modal(event) {
       // TODO: Add modal stuff. (called when SVG is clicked.)
     },
+    copy(event) {
+      var color =
+        event.target.getAttribute("data-color") ||
+        event.target.closest("[data-color]").getAttribute("data-color");
+      var tc = tinycolor(color);
+      Snackbar.show({
+        showAction: false,
+        text: `${color} copied to the clipboard!`,
+        backgroundColor: color,
+        textColor: tc.isLight() ? "#000" : "#fff",
+        pos: "bottom-center",
+      });
+      var t = document.createElement("textarea");
+      t.value = color;
+      document.body.appendChild(t);
+      t.select();
+      document.execCommand("copy");
+      t.remove();
+    },
   },
   computed: {
     imageList() {

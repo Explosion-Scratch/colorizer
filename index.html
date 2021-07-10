@@ -3,7 +3,15 @@
   class="w-screen min-h-screen flex flex-col justify-center items-center"
 >
   <div
-    class="my-6 input_container w-5/6 flex flex-col justify-center items-center"
+    class="
+      my-6
+      max-w-5xl
+      input_container
+      w-5/6
+      flex flex-col
+      justify-center
+      items-center
+    "
   >
     <input
       placeholder="Enter a color!"
@@ -32,7 +40,7 @@
         via-blue-500
         from-indigo-400
         w-5/6
-        p-2
+        p-3
         text-white
         rounded-md
         mt-5
@@ -44,13 +52,25 @@
     </button>
   </div>
 
-  <ul id="colors">
+  <ul
+    id="colors"
+    class="
+      w-5/6
+      mx-auto
+      max-w-4xl
+      grid grid-cols-3
+      sm:grid-cols-4
+      md:grid-cols-5
+      lg:grid-cols-6
+    "
+  >
     <!-- TODO: Add tippy.js for info tooltip and create modal with other colors from the image and the image. -->
     <li
       v-for="image in imageList"
       :style="`--color: ${image.color}; --delay: ${Math.random()}s`"
       :data-color="image.color"
       :data-loading="image.color ? false : true"
+      @click="copy($event)"
       class="
         m-2
         text-transparent
@@ -119,3 +139,6 @@
 ></script>
 <!-- Main script -->
 <script src="script.js" defer async></script>
+<!-- Snackbar -->
+<script src="snackbar.js" defer></script>
+<link rel="stylesheet" href="snackbar.css" />

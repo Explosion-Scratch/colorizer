@@ -20,7 +20,7 @@ app.get("/imgsearch", query, async (req, res) => {
   res.json(
     (
       await new Promise((resolve) => gis(req.query.q, (_, r) => resolve(r)))
-    ).slice(0, 15)
+    ).slice(0, 100)
   );
 });
 function query(req, res, next) {
