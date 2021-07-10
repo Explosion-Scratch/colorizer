@@ -6,11 +6,12 @@ var app = Vue.createApp({
   },
   computed: {
     imageList() {
-      return this.images.sort((i) => {
-        if (!i.loaded) {
+      return this.images.sort((item) => {
+        if (!item.loaded) {
           return 1000;
         }
-        return i.tc.toHsl().h;
+        console.log(item.tc.toHsl());
+        return item.tc.toHsl().h;
       });
     },
   },
