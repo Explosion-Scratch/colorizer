@@ -30,18 +30,20 @@ var app = Vue.createApp({
   },
   computed: {
     imageList() {
-      return this.images.filter((i) => !i.error);
-      // Sort by color, alters colors of squares as loading though
-      /* .sort((item1, item2) => {
+      return this.images
+        .filter((i) => !i.error)
+        .sort((item1, item2) => {
+          // Sort by color, alters colors of squares as loading though
           const it = (item) => {
             if (!item.loaded) {
+              // If it's not loaded put it last
               return 1000;
             }
             console.log(item.tc.toHsl());
             return item.tc.toHsl().h;
           };
           return it(item1) - it(item2);
-        }); */
+        });
     },
   },
 }).mount("#app");
