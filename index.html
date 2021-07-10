@@ -50,6 +50,32 @@
     >
       Search
     </button>
+    <select
+      class="
+        mt-5
+        p-3
+        text-gray-600
+        rounded
+        bg-transparent
+        ring-2 ring-blue-400
+        w-5/6
+      "
+      name="result_type"
+      id="result_type"
+      @change="changeColorType($event)"
+    >
+      <option disabled selected class="text-gray-400">Color type</option>
+      <optgroup label="Muted">
+        <option value="Muted">Muted</option>
+        <option value="DarkMuted">Dark muted</option>
+        <option value="LightMuted">Light muted</option>
+      </optgroup>
+      <optgroup label="Vibrant">
+        <option value="Vibrant">Vibrant</option>
+        <option value="DarkVibrant">Dark vibrant</option>
+        <option value="LightVibrant">Light vibrant</option>
+      </optgroup>
+    </select>
   </div>
 
   <ul
@@ -67,7 +93,6 @@
     <!-- TODO: Add tippy.js for info tooltip and create modal with other colors from the image and the image. -->
     <li
       v-for="image in imageList"
-      :key="image.color"
       :style="`--color: ${image.color}; --delay: ${Math.random()}s`"
       :data-color="image.color"
       :data-loading="image.color ? false : true"

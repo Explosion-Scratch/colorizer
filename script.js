@@ -27,22 +27,6 @@ var app = Vue.createApp({
       document.execCommand("copy");
       t.remove();
     },
-  },
-  computed: {
-    imageList() {
-      return this.images
-        .filter((i) => !i.error)
-        .sort((item1, item2) => {
-          const it = (item) => {
-            if (!item.loaded) {
-              // If it's not loaded put it last
-              return 1000;
-            }
-            return 1;
-          };
-          return it(item1) - it(item2);
-        });
-    },
     sortImages() {
       this.images = this.images
         .filter((i) => !i.error)
@@ -77,6 +61,22 @@ var app = Vue.createApp({
           });
           out.color = out.tc.toHexString();
           return out;
+        });
+    },
+  },
+  computed: {
+    imageList() {
+      return this.images
+        .filter((i) => !i.error)
+        .sort((item1, item2) => {
+          const it = (item) => {
+            if (!item.loaded) {
+              // If it's not loaded put it last
+              return 1000;
+            }
+            return 1;
+          };
+          return it(item1) - it(item2);
         });
     },
   },
