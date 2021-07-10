@@ -1,3 +1,6 @@
+li {
+  background: var(--color);
+}
 li:hover {
   border: 2px solid var(--color);
   color: var(--color);
@@ -9,7 +12,7 @@ li::after {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-li.loading {
+li[data-loading="true"] {
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   background-color: #eee;
   pointer-events: none;

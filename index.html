@@ -6,10 +6,12 @@
 <div id="app">
   <ul id="colors">
     <li
-      v-for="image in images"
-      :style="`--color: ${'#0bb'}; --delay: ${Math.random()}`"
-      :data-color="`#0bb`"
+      v-for="image in imageList"
+      :style="`--color: ${image.color}; --delay: ${Math.random()}s`"
+      :data-color="image.color"
+      :data-loading="image.loading"
       class="
+        m-2
         text-transparent
         font-light
         text-lg
@@ -34,5 +36,11 @@
   href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
   rel="stylesheet"
 />
+<link rel="stylesheet" href="style.css" />
 <script src="https://unpkg.com/vue@3"></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.2/tinycolor.min.js"
+  referrerpolicy="no-referrer"
+  defer
+></script>
 <script src="script.js" defer async></script>
