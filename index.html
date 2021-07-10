@@ -1,3 +1,38 @@
 <div class="input">
-    <input type="text" placeholder="Search for a color"><button id="submit">Go</button>
+  <input type="text" placeholder="Search for a color" /><button id="submit">
+    Go
+  </button>
 </div>
+<div id="app">
+  <ul id="colors">
+    <li
+      v-for="image in images"
+      :style="`--color: ${'#0bb'}; --delay: ${Math.random()}`"
+      :data-color="`#0bb`"
+      class="
+        text-transparent
+        font-light
+        text-lg
+        hover:bg-transparent
+        rounded-md
+        p-5
+        inline-block
+        w-32
+        h-32
+        shadow-md
+        cursor-pointer
+        select-none
+        transition-all
+        active:scale-95
+        duration-100
+        relative
+      "
+    ></li>
+  </ul>
+</div>
+<link
+  href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+  rel="stylesheet"
+/>
+<script src="https://unpkg.com/vue@3"></script>
+<script src="script.js" defer async></script>
