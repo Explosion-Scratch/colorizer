@@ -44,7 +44,7 @@ var app = Vue.createApp({
         });
     },
     sortImages() {
-      return this.images
+      this.images = this.images
         .filter((i) => !i.error)
         .sort((item1, item2) => {
           // Sort by color, alters colors of squares as loading though
