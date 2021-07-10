@@ -39,7 +39,6 @@ var app = Vue.createApp({
               // If it's not loaded put it last
               return 1000;
             }
-            console.log(item.tc.toHsl());
             return item.tc.toHsl().h;
           };
           return it(item1) - it(item2);
@@ -83,3 +82,22 @@ btn.onclick = async () => {
       });
   });
 };
+function changeColors(colorType) {
+  return app.images
+    .filter((i) => !(i.error || !i.loaded))
+    .map((i) => {
+      var out = { ...i };
+      var col =
+        i.pallette[colorType].rgb ||
+        i.pallette.Muted.rgb ||
+        i.pallette.DarkMuted.rgb ||
+        i.pallette.DarkVibrant.rgb ||
+        i.pallette.LightVibrant.rgb;
+      out.tc = tinycolor({
+        r: col[0],
+        g: col[1],
+        b: col[2],
+      });
+      out.color = out.tc.toHexString();
+    });
+}
