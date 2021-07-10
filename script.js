@@ -8,14 +8,9 @@ var app = Vue.createApp({
     imageList() {
       return this.images.sort((i) => {
         if (!i.loaded) {
-          return -1000;
+          return 1000;
         }
-        var col = i.pallette.Muted.rgb;
-        return tinycolor({
-          r: col[0],
-          g: col[1],
-          b: col[2],
-        }).toHsl().h;
+        return i.tc.toHsl().h;
       });
     },
   },
@@ -35,11 +30,12 @@ btn.onclick = async () => {
         app.images[index].loaded = true;
         app.images[index].pallette = pallette;
         var col = pallette.Muted.rgb;
-        app.images[index].color = tinycolor({
+        app.images[index].tc = tinycolor({
           r: col[0],
           g: col[1],
           b: col[2],
-        }).toHexString();
+        });
+        app.images[index].color = app.images[index].tc.toHexString();
       });
   });
 };
