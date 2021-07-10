@@ -31,6 +31,11 @@ btn.onclick = async () => {
     fetch(`/color?q=${escape(image.url)}`)
       .then((res) => res.json())
       .then((pallette) => {
+        if (pallette.error) {
+          // Just replace it with undefined, if we delete it though it'll mess with other fetch calls.
+          // I might make the computed image list check for errors as well.
+          delete app.images[index];
+        }
         app.images[index].loaded = true;
         app.images[index].pallette = pallette;
         // Get color
