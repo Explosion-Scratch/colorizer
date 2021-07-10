@@ -33,6 +33,20 @@ var app = Vue.createApp({
       return this.images
         .filter((i) => !i.error)
         .sort((item1, item2) => {
+          const it = (item) => {
+            if (!item.loaded) {
+              // If it's not loaded put it last
+              return 1000;
+            }
+            return 1;
+          };
+          return it(item1) - it(item2);
+        });
+    },
+    sortImages() {
+      return this.images
+        .filter((i) => !i.error)
+        .sort((item1, item2) => {
           // Sort by color, alters colors of squares as loading though
           const it = (item) => {
             if (!item.loaded) {
@@ -42,6 +56,27 @@ var app = Vue.createApp({
             return item.tc.toHsl().h;
           };
           return it(item1) - it(item2);
+        });
+    },
+    changeColorType(event) {
+      var colorType = event.target.value;
+      this.images = this.images
+        .filter((i) => !(i.error || !i.loaded))
+        .map((i) => {
+          var out = { ...i };
+          var col =
+            i.pallette[colorType].rgb ||
+            i.pallette.Muted.rgb ||
+            i.pallette.DarkMuted.rgb ||
+            i.pallette.DarkVibrant.rgb ||
+            i.pallette.LightVibrant.rgb;
+          out.tc = tinycolor({
+            r: col[0],
+            g: col[1],
+            b: col[2],
+          });
+          out.color = out.tc.toHexString();
+          return out;
         });
     },
   },
@@ -82,22 +117,3 @@ btn.onclick = async () => {
       });
   });
 };
-function changeColors(colorType) {
-  return app.images
-    .filter((i) => !(i.error || !i.loaded))
-    .map((i) => {
-      var out = { ...i };
-      var col =
-        i.pallette[colorType].rgb ||
-        i.pallette.Muted.rgb ||
-        i.pallette.DarkMuted.rgb ||
-        i.pallette.DarkVibrant.rgb ||
-        i.pallette.LightVibrant.rgb;
-      out.tc = tinycolor({
-        r: col[0],
-        g: col[1],
-        b: col[2],
-      });
-      out.color = out.tc.toHexString();
-    });
-}
