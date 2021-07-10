@@ -9,7 +9,7 @@
       v-for="image in imageList"
       :style="`--color: ${image.color}; --delay: ${Math.random()}s`"
       :data-color="image.color"
-      :data-loading="image.loading"
+      :data-loading="image.color ? true : false"
       class="
         m-2
         text-transparent

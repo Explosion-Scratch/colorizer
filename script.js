@@ -33,7 +33,12 @@ btn.onclick = async () => {
       .then((pallette) => {
         app.images[index].loaded = true;
         app.images[index].pallette = pallette;
-        var col = pallette.Muted.rgb;
+        // Get color
+        var col =
+          pallette.Muted.rgb ||
+          pallette.DarkMuted.rgb ||
+          pallette.DarkVibrant.rgb ||
+          pallette.LightVibrant.rgb;
         app.images[index].tc = tinycolor({
           r: col[0],
           g: col[1],
