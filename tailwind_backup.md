@@ -1,4 +1,4 @@
-https://play.tailwindcss.com/aU4OaOG0uG
+https://play.tailwindcss.com/9Kcem9gHkQ
 
 # CSS
 

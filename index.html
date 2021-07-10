@@ -1,9 +1,49 @@
-<div class="input">
-  <input type="text" placeholder="Search for a color" /><button id="submit">
-    Go
-  </button>
-</div>
-<div id="app">
+<div
+  id="app"
+  class="w-screen min-h-screen flex flex-col justify-center items-center"
+>
+  <div
+    class="my-6 input_container w-5/6 flex flex-col justify-center items-center"
+  >
+    <input
+      placeholder="Enter a color!"
+      class="
+        text-center
+        outline-none
+        focus:outline-none
+        p-3
+        px-5
+        ring-2 ring-blue-500
+        rounded-full
+        text-md text-gray-600
+        focus:ring-4 focus:ring-opacity-20
+        shadow-md
+        focus:w-full
+        w-5/6
+        transition-all
+        duration-300
+      "
+    />
+    <button
+      class="
+        search
+        bg-gradient-to-tl
+        to-green-300
+        via-blue-500
+        from-indigo-400
+        w-5/6
+        p-2
+        text-white
+        rounded-md
+        mt-5
+        hover:to-blue-400
+        hover:from-indigo-600
+      "
+    >
+      Search
+    </button>
+  </div>
+
   <ul id="colors">
     <!-- TODO: Add tippy.js for info tooltip and create modal with other colors from the image and the image. -->
     <li
@@ -32,7 +72,7 @@
       "
     >
       <svg
-      @click.capture.stop="modal($event)"
+        @click.capture.stop="modal($event)"
         data-tippy-content="More colors + info"
         class="info_icon"
         xmlns="http://www.w3.org/2000/svg"
