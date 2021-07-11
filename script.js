@@ -2,7 +2,7 @@ var app = Vue.createApp({
   data() {
     return {
       images: [],
-      isLoading: true,
+      isLoading: false,
     };
   },
   methods: {
@@ -90,6 +90,7 @@ var app = Vue.createApp({
 const btn = document.querySelector("button");
 
 btn.onclick = async () => {
+  app.isLoading = true;
   var images = await fetch(
     `/imgsearch?q=${escape(document.querySelector("input").value)}`
   ).then((res) => res.json());
@@ -98,6 +99,7 @@ btn.onclick = async () => {
     fetch(`/color?q=${escape(image.url)}`)
       .then((res) => res.json())
       .then((pallette) => {
+        app.isLoading = false;
         if (pallette.error) {
           // Filtered in computed imageList
           return (app.images[index].error = true);
