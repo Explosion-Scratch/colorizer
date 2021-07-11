@@ -2,6 +2,7 @@ var app = Vue.createApp({
   data() {
     return {
       images: [],
+      isLoading: true,
     };
   },
   methods: {

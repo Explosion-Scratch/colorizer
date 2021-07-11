@@ -143,7 +143,20 @@
       </svg>
     </li>
   </ul>
+  <div
+    :class="{loading_shown: isLoading, loading_hidden: !isLoading}"
+    v-show="isoading"
+  >
+    <div class="loading">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+  </div>
 </div>
+
 <!-- Tippy.js -->
 <script src="https://unpkg.com/@popperjs/core@2"></script>
 <script src="https://unpkg.com/tippy.js@6"></script>
