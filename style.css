@@ -93,7 +93,9 @@ Vue loading transitions
 .loading_hidden {
   opacity: 0;
 }
-
+.loading_container.loading_hidden {
+  pointer-events: none;
+}
 /* --------------------------------
 Main loading CSS
 ----------------------------------*/
