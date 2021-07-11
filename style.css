@@ -1,6 +1,40 @@
 .input_container button:hover {
   animation: shadow 1s infinite;
 }
+.focus\:w-full:focus {
+  width: 100%;
+}
+li svg {
+  fill: var(--color);
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  opacity: 0;
+  display: block;
+}
+li {
+  border-color: transparent;
+}
+.dark input {
+  background: transparent;
+  color: #eee !important;
+}
+.dark select {
+  color: #bbb !important;
+}
+.dark option {
+  background: #111;
+}
+li:hover svg {
+  opacity: 1;
+  cursor: pointer;
+}
+.dark optgroup {
+  background: #222;
+}
+.dark body {
+  background: #111;
+}
 @keyframes shadow {
   20% {
     box-shadow: 0 0 0 5px #0bb5;

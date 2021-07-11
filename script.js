@@ -44,6 +44,10 @@ var app = Vue.createApp({
     },
     changeColorType(event) {
       var colorType = event.target.value;
+      document.documentElement.classList.remove("dark");
+      if (colorType.startsWith("Dark")) {
+        document.documentElement.classList.add("dark");
+      }
       this.images = this.images
         .filter((i) => !(i.error || !i.loaded))
         .map((i) => {
